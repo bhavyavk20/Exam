@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest substring</title>
+</head>
+
+<body>
+    <script>
+        let s = prompt("Enter the string:");
+        document.write("s=" + s + "<br>");
+        let long = "";
+        let current = "";
+        let len;
+        let index = {};
+
+        for (let i = 0; i < s.length; i++) {
+            let char = s[i];
+            if (index[char] === undefined || index[char] < i - current.length) {
+                index[char] = i;
+                current += char;
+                if (current.length > long.length) {
+                    long = current;
+                }
+            } else {
+                current = current.slice(index[char] - i + 1) + char;
+                index[char] = i;
+            }
+        }
+        document.write(long + "<br>");
+        len = long.length;
+        document.write(len);
+    </script>
+</body>
+
+</html>
