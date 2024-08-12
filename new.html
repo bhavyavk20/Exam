@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram or Not without using any built in array methods</title>
+</head>
+
+<body>
+    <script>
+        var m = prompt("Enter 1st string:");
+        var n = prompt("Enter 2nd string:");
+        document.write(m+"<br>"+n+"<br>");
+
+        function findLength(str) {
+            let count = 0;
+            for (let char of str) {
+                count++;
+            }
+            return count;
+        }
+
+        function countCharacters(str) {
+            let charCount = {};
+            for (let i = 0; i < findLength(str); i++) {
+                let char = str[i];
+                if (charCount[char]) {
+                    charCount[char]++;
+                } else {
+                    charCount[char] = 1;
+                }
+            }
+            return charCount;
+        }
+
+        let lengthM = findLength(m);
+        let lengthN = findLength(n);
+        document.write("Length of first string: " + lengthM + "<br>");
+        document.write("Length of second string: " + lengthN + "<br>");
+
+        if (lengthM === lengthN) {
+            let countM = countCharacters(m);
+            let countN = countCharacters(n);
+
+            let isAnagram = true;
+            for (let char in countM) {
+                if (countM[char] !== countN[char]) {
+                    isAnagram = false;
+                    break;
+                }
+            }
+
+            if (isAnagram) {
+                document.write("Anagram");
+            } else {
+                document.write("Not Anagram");
+            }
+        } else {
+            document.write("Not Anagram");
+        }
+    </script>
+</body>
+
+</html>

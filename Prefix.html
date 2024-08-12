@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting with given prefix</title>
+</head>
+<body>
+    <script>
+        var prefix = prompt("Enter the prefix:");
+        let n = parseInt(prompt("Enter the limit:"));
+        
+        var a = [];
+        for (let i = 0; i < n; i++) {
+            a[i] = prompt("Enter string " + (i + 1) + ":");
+        }
+
+        // Display elements (without using join)
+        document.write("The elements are: ");
+        for (let i = 0; i < n; i++) {
+            document.write(a[i]);
+            if (i < n - 1) {
+                document.write(", ");
+            }
+        }
+        document.write("<br>");
+
+        var elements = [];
+        var count = 0;
+        for (let i = 0; i < n; i++) {
+            if (a[i].substring(0, prefix.length) === prefix) {
+                elements[count] = a[i];
+                count++;
+            }
+        }
+
+        // Display elements starting with the given prefix
+        document.write("The elements starting with '" + prefix + "' are: ");
+        for (let i = 0; i < count; i++) {
+            document.write(elements[i]);
+            if (i < count - 1) {
+                document.write(", ");
+            }
+        }
+        document.write("<br>");
+    </script>
+</body>
+</html>
